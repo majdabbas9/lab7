@@ -49,4 +49,13 @@ public class Image {
     public void setCar(Car car) {
         this.car = car;
     }
+
+    @Override
+    public String toString() {
+        return "Image{" +
+                "id=" + id +
+                ", imageUrl='" + imageUrl + '\'' +
+                ", car=" + car +
+                '}';
+    }
 }

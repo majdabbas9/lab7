@@ -24,16 +24,21 @@ public class Person {
     private String secondName;
     private String password;
     private String Email;
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "person")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "owner")
     private List<Car> cars;
+    @ManyToMany(mappedBy = "owners",
+            cascade = {CascadeType.PERSIST, CascadeType.MERGE},
+            targetEntity = Garage.class
+    )
+    private List<Garage> garages;
 
-    public Person(String firstName,String secondName,String password,String email) {
+    public Person(String firstName,String secondName,String password) {
         this.firstName=firstName;
         this.secondName=secondName;
         this.password=password;
-        this.Email=email;
+        this.Email=firstName+"."+secondName+"@"+"gmail.com";
         this.cars = new ArrayList<Car>();
-
+        this.garages = new ArrayList<Garage>();
     }
 
     public Person() {
@@ -82,5 +87,29 @@ public class Person {
 
     public void setCars(List<Car> cars) {
         this.cars = cars;
+    }
+    public void addCar(Car car)
+    {
+        this.cars.add(car);
+    }
+
+    public List<Garage> getGarages() {
+        return garages;
+    }
+
+    public void setGarages(List<Garage> garages) {
+        this.garages = garages;
+    }
+    public void addGarage(Garage garage)
+    {
+        this.garages.add(garage);
+    }
+
+    @Override
+    public String toString() {
+        String personToString="Owner ID="+this.id+"\n";
+        personToString+="Owner Name="+this.firstName+" "+this.secondName+"\n";
+        personToString+="Owner Email"+this.Email+"\n";
+        return personToString;
     }
 }

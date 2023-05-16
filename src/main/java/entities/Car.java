@@ -1,6 +1,7 @@
 package entities;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -28,16 +29,22 @@ public class Car
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "person_id")
-    private Person person;
+    private Person owner;
     @OneToOne
     @JoinColumn(name = "image_id")
     private Image image;
+    @ManyToMany(mappedBy = "cars",
+            cascade = {CascadeType.PERSIST, CascadeType.MERGE},
+            targetEntity = Garage.class
+    )
+    private List<Garage> garages;
     public Car(String licensePlate, double price, int year,Person person) {
         super();
         this.licensePlate = licensePlate;
         this.price = price;
         this.year = year;
         setPerson(person);
+        this.garages=new ArrayList<>();
     }
 
     public Car() {
@@ -71,11 +78,11 @@ public class Car
     }
 
     public Person getPerson() {
-        return person;
+        return owner;
     }
 
     public void setPerson(Person person) {
-        this.person = person;
+        this.owner = person;
     }
 
     public Image getImage() {
@@ -84,5 +91,33 @@ public class Car
 
     public void setImage(Image image) {
         this.image = image;
+    }
+
+    public List<Garage> getGarages() {
+        return garages;
+    }
+
+    public void setGarages(List<Garage> garages) {
+        this.garages = garages;
+    }
+    public void addGarge(Garage garage)
+    {
+        this.garages.add(garage);
+    }
+
+    @Override
+    public String toString() {
+        String carToString="car id=" + id +
+                "\nlicensePlate=" + licensePlate +
+                "\nprice=" + price
+                +"\nyear=" + year +
+                "\nimageUrl="
+                + image.getImageLink()+"\n";
+        carToString+=owner.toString();
+        for(int i=0;i<garages.size();i++)
+        {
+            carToString+="garage number="+(i+1)+" adress="+garages.get(i).getAdress()+"\n";
+        }
+        return carToString;
     }
 }
