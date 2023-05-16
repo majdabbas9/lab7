@@ -29,6 +29,9 @@ public class Car
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "person_id")
     private Person person;
+    @OneToOne
+    @JoinColumn(name = "image_id")
+    private Image image;
     public Car(String licensePlate, double price, int year,Person person) {
         super();
         this.licensePlate = licensePlate;
@@ -73,5 +76,13 @@ public class Car
 
     public void setPerson(Person person) {
         this.person = person;
+    }
+
+    public Image getImage() {
+        return image;
+    }
+
+    public void setImage(Image image) {
+        this.image = image;
     }
 }
