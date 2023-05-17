@@ -100,7 +100,7 @@ public class Garage {
     @Override
     public String toString() {
         int i;
-        String gargeToString=owners.get(0).getFirstName()+" "+owners.get(0).getSecondName() + "Garage";
+        String gargeToString=owners.get(0).getFirstName()+" "+owners.get(0).getSecondName() + " Garage";
         gargeToString+="\nid=" + id + "\nadress=" + adress + "\nphoneNumber=" + phoneNumber+"\n";
         for(i=0;i<cars.size();i++)
         {

@@ -20,7 +20,10 @@ import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
 public class App
 {
-
+    public static final String ANSI_GREEN = "\u001B[32m";
+    public static final String GREEN_BOLD = "\033[1;32m";
+    public static final String ANSI_RED = "\u001B[31m";
+    public static final String ANSI_RESET = "\u001B[0m";
     private static Session session;
 
     private static SessionFactory getSessionFactory() throws HibernateException {
@@ -238,6 +241,7 @@ public class App
 
     private static void printAllCars() throws Exception {
         List<Car> cars = getAllCars();
+        System.out.println(GREEN_BOLD+"all of Cars:\n"+ANSI_RESET);
         for (Car car : cars) {
             System.out.println(car);
         }
@@ -245,6 +249,7 @@ public class App
     private static void printAllGarages() throws Exception
     {
         List<Garage> garages = getAllGarges();
+        System.out.println(GREEN_BOLD+"all of Garages:\n"+ANSI_RESET);
         for (Garage garage : garages) {
             System.out.println(garage);
         }
