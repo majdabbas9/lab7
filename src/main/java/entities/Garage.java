@@ -1,5 +1,7 @@
 package entities;
 
+import coloring.Colors;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -104,7 +106,7 @@ public class Garage {
         gargeToString+="\nGarage ID = " + id + "\nadress = " + adress + "\nphoneNumber = " + phoneNumber+"\n";
         for(i=0;i<cars.size();i++)
         {
-            gargeToString+="car number = "+(i+1)+" "+" -> plate number = "+cars.get(i).getLicensePlate()+"\n";
+            gargeToString+="car number = "+(i+1)+ Colors.GREEN_BOLD+" -> "+Colors.ANSI_RESET+"plate number = "+cars.get(i).getLicensePlate()+"\n";
         }
         return  gargeToString;
     }

@@ -1,5 +1,7 @@
 package entities;
 
+import coloring.Colors;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,6 +17,7 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
 @Entity
 @Table(name = "cars")
 public class Car
@@ -116,7 +119,7 @@ public class Car
         carToString+=owner.toString();
         for(int i=0;i<garages.size();i++)
         {
-            carToString+="garage number = "+(i+1)+" -> adress = "+garages.get(i).getAdress()+"\n";
+            carToString+="garage number = "+(i+1)+ Colors.GREEN_BOLD+" -> "+Colors.ANSI_RESET+"adress = "+garages.get(i).getAdress()+"\n";
         }
         return carToString;
     }
