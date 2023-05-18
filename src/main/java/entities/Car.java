@@ -107,16 +107,16 @@ public class Car
 
     @Override
     public String toString() {
-        String carToString="car id=" + id +
-                "\nlicensePlate=" + licensePlate +
-                "\nprice=" + price
-                +"\nyear=" + year +
-                "\nimageUrl="
+        String carToString="Car ID = " + id +
+                "\nlicensePlate = " + licensePlate +
+                "\nprice = " + price
+                +"\nyear = " + year +
+                "\nimageUrl = "
                 + image.getImageLink()+"\n";
         carToString+=owner.toString();
         for(int i=0;i<garages.size();i++)
         {
-            carToString+="garage number="+(i+1)+" adress="+garages.get(i).getAdress()+"\n";
+            carToString+="garage number = "+(i+1)+" -> adress = "+garages.get(i).getAdress()+"\n";
         }
         return carToString;
     }

@@ -107,9 +107,9 @@ public class Person {
 
     @Override
     public String toString() {
-        String personToString="Owner ID="+this.id+"\n";
-        personToString+="Owner Name="+this.firstName+" "+this.secondName+"\n";
-        personToString+="Owner Email"+this.Email+"\n";
+        String personToString="Owner ID = "+this.id+"\n";
+        personToString+="Owner Name = "+this.firstName+" "+this.secondName+"\n";
+        personToString+="Owner Email = "+this.Email+"\n";
         return personToString;
     }
 }

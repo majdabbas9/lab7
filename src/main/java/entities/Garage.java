@@ -101,10 +101,10 @@ public class Garage {
     public String toString() {
         int i;
         String gargeToString=owners.get(0).getFirstName()+" "+owners.get(0).getSecondName() + " Garage";
-        gargeToString+="\nid=" + id + "\nadress=" + adress + "\nphoneNumber=" + phoneNumber+"\n";
+        gargeToString+="\nGarage ID = " + id + "\nadress = " + adress + "\nphoneNumber = " + phoneNumber+"\n";
         for(i=0;i<cars.size();i++)
         {
-            gargeToString+="car number "+(i+1)+" "+"plate number="+cars.get(i).getLicensePlate()+"\n";
+            gargeToString+="car number = "+(i+1)+" "+" -> plate number = "+cars.get(i).getLicensePlate()+"\n";
         }
         return  gargeToString;
     }
